@@ -1,0 +1,64 @@
+.Chat__wrapper{
+    height: 400px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .Chat{
+    height: 85%;
+    background-color: rgb(235, 232, 232);
+    border-radius: 5px;
+    padding: 20px 0 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .Chat__list{
+    height: 90%;
+    width: 90%;
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Chat__message{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    height: 50px;
+    min-height: 50px;
+    max-height: 100px;
+    width: 90%;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+  }
+  
+  .Person-name{
+    font-size: 10px;
+    color: rgb(75, 75, 75);
+    font-weight: 500;
+    margin: 0 0 5px 0;
+    padding: 0;
+    text-align: left;
+  }
+  .Person-text{
+    font-size: 15px;
+    color: rgb(75, 75, 75);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 200px;
+  }
+  .Person-img{
+    background-color: lightgrey;
+    border-radius: 100%;
+    border: none;
+    margin: 50% 10px 0 5px;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+  }

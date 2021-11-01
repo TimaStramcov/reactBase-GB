@@ -1,0 +1,11 @@
+.ChatList__wrapper{
+    height: 300px;
+    width: 60px;
+    background-color: rgb(235, 232, 232);
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.Person-img{
+    font-size: 10px;
+}
