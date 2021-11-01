@@ -1,22 +1,57 @@
+import { BrowserRouter, Link, Switch, Route, Redirect} from 'react-router-dom';
+import Chats from './Screens/Chats/Chats.jsx';
+import Profile from './Screens/Profile/Profile.jsx';
 import logo from './img/logo.svg';
-import { useState } from 'react';
 import './App.css';
-import MessageList from './components/messageList/MessageList.jsx';
-import ChatList from './components/ChatList/ChatList';
+import { ROUTES } from './Routing/constants.js';
 
 const App = () => {
-  const [messageList, setMessageList] = useState([]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div className="ChatAppWrapper">
-          <ChatList />
-          <MessageList messageList={messageList} setMessageList={setMessageList}/>
-        </div>
-      </header>
-    </div>
+        <BrowserRouter>
+        <div className="App">
+          <header className="App-header">
+            <ul>
+              <li>
+                <Link to={ROUTES.MAIN}>Home</Link>
+              </li>
+              <li>
+                <Link to={ROUTES.PROFILE}>Profile</Link>
+              </li>
+              <li>
+                <Link to={ROUTES.CHATS}>Chats</Link>
+              </li>
+            </ul>
+            <Switch>
+              <Route 
+                exact path={ROUTES.MAIN}
+                render={ () => <img src={logo} className="App-logo" alt="logo" />}
+              >  
+              </Route>
+              <Route path={ROUTES.PROFILE}>
+               <Profile />
+              </Route>
+              <Route
+                exact
+                path={ROUTES.CHATS}
+                render={ () => <Chats />}
+                >                
+              </Route>
+              <Route 
+                path={ROUTES.CHAT}
+                render={ () => <Chats />}
+                >                
+              </Route>
+              <Route path={ROUTES.NOT_FOUND}>
+                404 not Found              
+              </Route>
+              <Route>
+                <Redirect to={ROUTES.NOT_FOUND} />             
+              </Route>
+            </Switch>
+            </header>
+          </div>
+        </BrowserRouter>
   );
 }
 
