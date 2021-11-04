@@ -9,3 +9,8 @@
 .Person-img{
     font-size: 10px;
 }
+
+.Person-img:hover{
+    cursor: pointer;
+    opacity: .8;
+}

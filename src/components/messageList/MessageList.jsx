@@ -1,5 +1,4 @@
 import { useEffect} from 'react';
-import Message from '../Message/Message';
 import './MessageList.css';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,6 +8,7 @@ import bot from '../../img/avatar-bot.jpg';
 import uuid from 'react-uuid';
 
 function MessageList(props){
+    const {chats} = props;
     const {messageList} = props;
     const {setMessageList} = props;
 
@@ -24,21 +24,18 @@ function MessageList(props){
     }, [messageList])
 
     return(
-        <div className="Chat__wrapper">
-            <div className="Chat">
-                <List className="Chat__list">
-                    {messageList.map((item) => (
-                        <ListItem key={uuid()} className="Chat__message">
-                            <ListItemAvatar>
-                                <img src={item.img} alt="avatar" width="30px" height="30px" className="Person-img"/>
-                            </ListItemAvatar>
-                            <ListItemText sx={{color: 'black'}} primary={item.text} secondary={item.author}/>
-                        </ListItem>
+        <div className="Chat">
+            <List className="Chat__list">
+                {messageList.map((item) => (
+                    <ListItem key={uuid()} className="Chat__message">
+                        <ListItemAvatar>
+                            <img src={item.img} alt="avatar" width="30px" height="30px" className="Person-img"/>
+                        </ListItemAvatar>
+                        <ListItemText sx={{color: 'black'}} primary={item.text} secondary={item.author}/>
+                    </ListItem>
                     )
-                    )}
-                </List>
-            </div>
-            <Message messageList={messageList} setMessageList={setMessageList}/>
+                )}
+            </List>
         </div>
     )
 }

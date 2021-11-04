@@ -1,0 +1,7 @@
+.Chat__wrapper{
+    height: 400px;
+    width: 300px;
+    background-color: rgb(235, 232, 232);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }

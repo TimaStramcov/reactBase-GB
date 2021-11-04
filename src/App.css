@@ -45,3 +45,8 @@ body{
 .ChatAppWrapper{
   display: flex;
 }
+
+li{
+  list-style: none;
+}
+
