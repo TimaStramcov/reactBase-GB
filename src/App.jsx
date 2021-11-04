@@ -42,6 +42,7 @@ const App = () => {
                 render={ () => <Chats />}
                 >                
               </Route>
+              
               <Route path={ROUTES.NOT_FOUND}>
                 404 not Found              
               </Route>
