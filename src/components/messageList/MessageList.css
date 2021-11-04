@@ -1,17 +1,10 @@
-.Chat__wrapper{
-    height: 400px;
-    width: 300px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .Chat{
+.Chat{
     height: 85%;
     background-color: rgb(235, 232, 232);
     border-radius: 5px;
     padding: 20px 0 0 20px;
     box-sizing: border-box;
+    overflow: scroll;
   }
   
   .Chat__list{

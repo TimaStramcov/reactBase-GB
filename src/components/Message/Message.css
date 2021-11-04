@@ -3,6 +3,7 @@
     height: 15%;
     width: 100%;
     border-top: 1px solid lightgrey;
+    
   }
   
   .Message-text{
@@ -15,6 +16,7 @@
     font-size: 15px;
     outline: 0;
     outline-offset: 0;
+    background-color: white;
   }
   
   .Send{
