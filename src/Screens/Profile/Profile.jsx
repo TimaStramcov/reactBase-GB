@@ -1,20 +1,32 @@
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../Store"
-import { toggleShowNameAction } from "../../Store/Profile/action";
+import { changeUserNameAction } from "../../Store/Profile/action";
 import { profileSelector } from "../../Store/Profile/selectors";
 
 const Profile = () => {
-    const {name, showName} = useSelector(profileSelector);
+    const {userName} = useSelector(profileSelector);
     const dispatch = useDispatch();
-    const handleToggleShowName = () => {
-        dispatch(toggleShowNameAction())
-    }
+
+     const setName = useCallback(() => dispatch(changeUserNameAction()), [dispatch, userName]);
+      
+    const handleChange = useCallback((e) => {
+        dispatch(changeUserNameAction(e.target.value));
+     }, [dispatch]);
 
     return (
+        <>
         <div>
-            <button onClick={handleToggleShowName}>click</button>
-            <div>{showName && name}</div>
+          <h4>Profile</h4>
+          <div>{userName}</div>
         </div>
+        <div>
+          <input type="text" value={userName} onChange={handleChange} />
+        </div>
+        <div>
+          <button onClick={setName}>Change Name</button>
+        </div>
+      </>
     )
 }
 

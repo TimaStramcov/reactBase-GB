@@ -5,8 +5,11 @@ import './ChatList.css';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import { useSelector } from 'react-redux';
+import { chatsSelector } from '../../Store/Chats/selectors';
 
 const ChatList = ({chats, chatId}) => {
+    const { chatList } = useSelector(chatsSelector)
     const chatsArr = [];
     const pushChats = () => {
         for (let key in chats) {
@@ -14,7 +17,6 @@ const ChatList = ({chats, chatId}) => {
         }
     };
     pushChats()
-    const [chatList, setChatList] = useState([...chatsArr]);
 
     console.log(chatsArr[0])
 

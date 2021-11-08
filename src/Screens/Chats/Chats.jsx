@@ -1,44 +1,25 @@
-import { useState } from 'react';
-import { Redirect, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import Chat from '../../components/Chat/Chat.jsx';
 import ChatList from '../../components/ChatList/ChatList.jsx';
-import avatar from '../../img/avatar.jpg';
-import { ROUTES } from '../../Routing/constants.js';
-
-const initialChats = {
- id1: {
-   name: "Tima",
-   img: avatar,
-   messages: [{img: avatar, text: "I`m human", author: "Tima"}, {img: avatar, text: "how are you", author: "Tima"}],
- },
- id2: {
-   name: "Gergy",
-   img: avatar,
-   messages: [{img: avatar, text: "I`m bot", author: "bot"}],
- },
- id3: {
-  name: "Fury",
-  img: avatar,
-  messages: [{img: avatar, text: "I`m bot", author: "bot"}],
-},
-};
+import { useSelector } from 'react-redux';
+import { chatsSelector } from '../../Store/Chats/selectors';
 
 const Chats = () => {
+  const { chatList } = useSelector(chatsSelector)
   const { chatId } = useParams();
-  const [chats, setChats] = useState(initialChats);
-  const chatExist = chatId && initialChats[chatId];
+  const chatExist = chatId && chatList.id;
   
   if (!chatExist) {
     return (
       <div className="ChatAppWrapper">
-            <ChatList chats={chats} chatId={chatId}/>
+            <ChatList />
       </div>
     )}
 
     return (
         <div className="ChatAppWrapper">
             {/* <ChatList chats={chats} chatId={chatId} /> */}
-            <Chat chats={chats} chatId={chatId} />
+            <Chat />
         </div>
     )
 }

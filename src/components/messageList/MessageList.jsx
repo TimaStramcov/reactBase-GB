@@ -6,10 +6,13 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import bot from '../../img/avatar-bot.jpg';
 import uuid from 'react-uuid';
+import { useSelector } from 'react-redux';
+import { chatsSelector } from '../../Store/Chats/selectors';
+import { messagesSelector } from '../../Store/Messages/selectors';
 
 function MessageList(props){
-    const {chats} = props;
-    const {messageList} = props;
+    const { messageList } = useSelector(messagesSelector);
+    const { chatList } = useSelector(chatsSelector)
     const {setMessageList} = props;
 
     useEffect(() => {
@@ -17,7 +20,7 @@ function MessageList(props){
         const authorEndMessage = messageList[i]?.author;
         if (authorEndMessage !== 'bot' && authorEndMessage !== undefined){
             const renderMessage = setTimeout(() => {
-                setMessageList([...messageList, {author: 'bot', text: `Hello, ${authorEndMessage}`, id: messageList.length, img: bot}])
+                setMessageList([...messageList, {author: 'bot', message: `Hello, ${authorEndMessage}`, id: messageList.length, img: bot}])
             },1500)
             return () => clearTimeout(renderMessage)
         }
