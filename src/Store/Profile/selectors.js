@@ -1,3 +1,1 @@
-export const profileSelector = (store) => {
-   return store
-}
+export const profileSelector = (store) => store.profile;
