@@ -5,8 +5,7 @@ import './Chat.css';
 
 
 function Chat(){
-//   const [messageList, setMessageList] = useState([...chats[chatId].messages]);
-
+    
 
     return(
         <div className="Chat__wrapper">

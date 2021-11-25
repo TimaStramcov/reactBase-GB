@@ -1,0 +1,1 @@
+export const friendsSelector = (store) => store.friends;

@@ -3,12 +3,14 @@ import Chat from '../../components/Chat/Chat.jsx';
 import ChatList from '../../components/ChatList/ChatList.jsx';
 import { useSelector } from 'react-redux';
 import { chatsSelector } from '../../Store/Chats/selectors';
+import { messagesSelector } from '../../Store/Messages/selectors';
 
 const Chats = () => {
   const { chatList } = useSelector(chatsSelector)
+  const { messages } = useSelector(messagesSelector);
   const { chatId } = useParams();
-  const chatExist = chatId && chatList.id;
-  
+  const chatExist = chatId;
+
   if (!chatExist) {
     return (
       <div className="ChatAppWrapper">
@@ -18,7 +20,7 @@ const Chats = () => {
 
     return (
         <div className="ChatAppWrapper">
-            {/* <ChatList chats={chats} chatId={chatId} /> */}
+            <ChatList/>
             <Chat />
         </div>
     )

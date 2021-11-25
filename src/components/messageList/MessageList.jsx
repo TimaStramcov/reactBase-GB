@@ -1,40 +1,36 @@
-import { useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, useEffect} from 'react';
+import { useParams } from 'react-router';
 import './MessageList.css';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import bot from '../../img/avatar-bot.jpg';
 import uuid from 'react-uuid';
-import { useSelector } from 'react-redux';
 import { chatsSelector } from '../../Store/Chats/selectors';
+import { addMessageAction, addMessageWithThunk, initMessageTracking } from '../../Store/Messages/action';
 import { messagesSelector } from '../../Store/Messages/selectors';
 
-function MessageList(props){
+function MessageList(){
     const { messageList } = useSelector(messagesSelector);
     const { chatList } = useSelector(chatsSelector)
-    const {setMessageList} = props;
+    const { chatId } = useParams();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const i = messageList.length - 1;
-        const authorEndMessage = messageList[i]?.author;
-        if (authorEndMessage !== 'bot' && authorEndMessage !== undefined){
-            const renderMessage = setTimeout(() => {
-                setMessageList([...messageList, {author: 'bot', message: `Hello, ${authorEndMessage}`, id: messageList.length, img: bot}])
-            },1500)
-            return () => clearTimeout(renderMessage)
-        }
-    }, [messageList])
+        dispatch(initMessageTracking());
+      }, []);
 
     return(
         <div className="Chat">
             <List className="Chat__list">
-                {messageList.map((item) => (
+                {
+                messageList[chatId].map((item) => (
                     <ListItem key={uuid()} className="Chat__message">
                         <ListItemAvatar>
                             <img src={item.img} alt="avatar" width="30px" height="30px" className="Person-img"/>
                         </ListItemAvatar>
-                        <ListItemText sx={{color: 'black'}} primary={item.text} secondary={item.author}/>
+                        <ListItemText sx={{color: 'black'}} primary={item.message} secondary={item.author}/>
                     </ListItem>
                     )
                 )}
